@@ -107,8 +107,9 @@ char* CRKDevice::GetLayerName()
 
 string CRKDevice::GetLayerString(DWORD dwLocationID)
 {
-	char szLocation[32] = "\0";
-	sprintf(szLocation, "%d-%d", dwLocationID >> 8, dwLocationID & 0xff);
+  const int szLocationLen = 32;
+	char szLocation[szLocationLen] = "\0";
+	snprintf(szLocation, szLocationLen, "%d-%d", dwLocationID >> 8, dwLocationID & 0xff);
 	return szLocation;
 }
 
@@ -268,7 +269,7 @@ bool CRKDevice::EraseEmmc()
 		else
 			uiEraseCount = uiCount;
 		iRet = m_pComm->RKU_EraseLBA(uiSectorOffset, uiEraseCount);
-			
+
 		if (iRet != ERR_SUCCESS) {
 			if (m_pLog) {
 				m_pLog->Record("ERROR:EraseEmmc-->RKU_EraseLBA failed,RetCode(%d),offset=0x%x,count=0x%x",iRet, uiSectorOffset, uiEraseCount);
