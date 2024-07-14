@@ -544,7 +544,6 @@ int CRKDevice::DownloadBoot()
 
 		}
 	}
-
 	for ( i=0; i < m_pImage->m_bootObject->Entry472Count; i++ ) {
 		if ( !m_pImage->m_bootObject->GetEntryProperty(ENTRY472, i, dwSize, dwDelay) ) {
 			if (m_pLog) {
@@ -577,14 +576,15 @@ int CRKDevice::DownloadBoot()
 	}
 	sleep(1);
 	return 0;
-
 }
+
 bool CRKDevice::Boot_VendorRequest( DWORD requestCode, PBYTE pBuffer, DWORD dwDataSize)
 {
 	int iRet;
 	iRet = m_pComm->RKU_DeviceRequest(requestCode, pBuffer, dwDataSize);
 	return (iRet == ERR_SUCCESS) ? true : false;
 }
+
 int CRKDevice::EraseAllBlocks(bool force_block_erase)
 {
 	int i;
@@ -638,13 +638,13 @@ int CRKDevice::EraseAllBlocks(bool force_block_erase)
 			iCSIndex++;
 		}
 	}
-
 	if (m_callBackProc) {
 		emCallStep = CALL_LAST;
 		m_callBackProc(dwLayerID, ERASEFLASH_PROGRESS, m_flashInfo.uiBlockNum * bCSCount, iCSIndex * m_flashInfo.uiBlockNum, emCallStep);
 	}
 	return 0;
 }
+
 bool CRKDevice::ReadCapability()
 {
 	int ret;

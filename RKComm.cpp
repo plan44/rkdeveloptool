@@ -313,6 +313,7 @@ int CRKUsbComm::RKU_EraseBlock(BYTE ucFlashCS, DWORD dwPos, DWORD dwCount, BYTE 
 
 	return ERR_SUCCESS;
 }
+
 int CRKUsbComm::RKU_ReadChipInfo(BYTE* lpBuffer)
 {
     if ((m_deviceDesc.emUsbType != RKUSB_LOADER) && (m_deviceDesc.emUsbType != RKUSB_MASKROM)) {
@@ -597,6 +598,7 @@ int CRKUsbComm::RKU_TestDeviceReady(DWORD *dwTotal, DWORD *dwCurrent, BYTE bySub
 
 	return ERR_DEVICE_READY;
 }
+
 int CRKUsbComm::RKU_WriteLBA(DWORD dwPos, DWORD dwCount, BYTE* lpBuffer, BYTE bySubCode)
 {
     if ((m_deviceDesc.emUsbType != RKUSB_LOADER) && (m_deviceDesc.emUsbType != RKUSB_MASKROM)) {
@@ -638,11 +640,12 @@ int CRKUsbComm::RKU_WriteLBA(DWORD dwPos, DWORD dwCount, BYTE* lpBuffer, BYTE by
 
 	return ERR_SUCCESS;
 }
+
 int CRKUsbComm::RKU_EraseLBA(DWORD dwPos, DWORD dwCount)
 {
     if ((m_deviceDesc.emUsbType != RKUSB_LOADER) && (m_deviceDesc.emUsbType != RKUSB_MASKROM)) {
         if (m_log) {
-            m_log->Record("Error:RKU_WriteLBA failed,device not support");
+            m_log->Record("Error:RKU_EraseLBA failed,device not support");
         }
         return ERR_DEVICE_NOT_SUPPORT;
     }

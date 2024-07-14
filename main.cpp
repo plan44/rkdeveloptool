@@ -41,30 +41,32 @@ u8 test_gpt_head[] = {
 
 void usage()
 {
-	printf("\r\n---------------------Tool Usage ---------------------\r\n");
-	printf("Help:\t\t\t-h or --help\r\n");
-	printf("Version:\t\t-v or --version\r\n");
-	printf("ListDevice:\t\tld\r\n");
-	printf("DownloadBoot:\t\tdb <Loader>\r\n");
-	printf("UpgradeLoader:\t\tul <Loader>\r\n");
-	printf("ReadLBA:\t\trl  <BeginSec> <SectorLen> <File>\r\n");
-	printf("WriteLBA:\t\twl  <BeginSec> <File>\r\n");
-	printf("WriteLBA:\t\twlx  <PartitionName> <File>\r\n");
-	printf("WriteGPT:\t\tgpt <gpt partition table>\r\n");
-	printf("WriteParameter:\t\tprm <parameter>\r\n");
-	printf("PrintPartition:\t\tppt \r\n");
-	printf("EraseFlash:\t\tef \r\n");
-	printf("TestDevice:\t\ttd\r\n");
-	printf("ResetDevice:\t\trd [subcode]\r\n");
-	printf("ReadFlashID:\t\trid\r\n");
-	printf("ReadFlashInfo:\t\trfi\r\n");
-	printf("ReadChipInfo:\t\trci\r\n");
-	printf("ReadCapability:\t\trcb\r\n");
-	printf("PackBootLoader:\t\tpack\r\n");
-	printf("UnpackBootLoader:\tunpack <boot loader>\r\n");
-	printf("TagSPL:\t\t\ttagspl <tag> <U-Boot SPL>\r\n");
-	printf("-------------------------------------------------------\r\n\r\n");
+	printf("\n---------------------Tool Usage -----------------------------\n");
+	printf("Help:              --help\n");
+	printf("Version:           -v or --version\n");
+	printf("ListDevice:        ld\n");
+	printf("DownloadBoot:      db <Loader>\n");
+	printf("UpgradeLoader:     ul <Loader>\n");
+	printf("ReadLBA:           rl <BeginSec> <SectorLen> <File>\n");
+	printf("WriteLBA:          wl <BeginSec> <File>\n");
+	printf("WriteLBA:          wlx <PartitionName> <File>\n");
+	printf("WriteGPT:          gpt <gpt partition table>\n");
+	printf("WriteParameter:    prm <parameter>\n");
+	printf("PrintPartition:    ppt \n");
+	printf("EraseFlash:        ef\n");
+  printf("EraseFlashBlocks:  eb <CS> <StartBlock> <NumBlocks> [--force]\n");
+	printf("TestDevice:        td\n");
+	printf("ResetDevice:       rd [subcode]\n");
+	printf("ReadFlashID:       rid\n");
+	printf("ReadFlashInfo:     rfi\n");
+	printf("ReadChipInfo:      rci\n");
+	printf("ReadCapability:    rcb\n");
+	printf("PackBootLoader:    pack\n");
+	printf("UnpackBootLoader:  unpack <boot loader>\n");
+	printf("TagSPL:            tagspl <tag> <U-Boot SPL>\n");
+	printf("-------------------------------------------------------\n\n");
 }
+
 void ProgressInfoProc(DWORD deviceLayer, ENUM_PROGRESS_PROMPT promptID, long long totalValue, long long currentValue, ENUM_CALL_STEP emCall)
 {
 	string strInfoText="";
@@ -2573,13 +2575,61 @@ Exit_ReadLBA:
 		fclose(file);
 	return bSuccess;
 }
+
+bool do_erase_blocks(CRKComm *pComm, BYTE ucFlashCS, u32 uiStartBlock, u32 uiNumBlocks, USB_OPERATION_CODE uiEraseType)
+{
+  UINT uiBlockCount;
+
+  while (uiNumBlocks>0)
+  {
+    uiBlockCount = (uiNumBlocks<MAX_ERASE_BLOCKS) ? uiNumBlocks:MAX_ERASE_BLOCKS;
+
+    int iRet = pComm->RKU_EraseBlock(ucFlashCS, uiStartBlock, uiBlockCount, uiEraseType);
+    if ((iRet!=ERR_SUCCESS)&&(iRet!=ERR_FOUND_BAD_BLOCK))
+    {
+      if (g_pLogObject)
+      {
+        g_pLogObject->Record("Error:do_erase_blocks-->RKU_EraseBlock failed,RetCode(%d)",iRet);
+      }
+      return false;
+    }
+
+    uiStartBlock += uiBlockCount;
+    uiNumBlocks -= uiBlockCount;
+  }
+  return true;
+}
+
+
+bool erase_blocks(STRUCT_RKDEVICE_DESC &dev, BYTE ucFlashCS, u32 uiStartBlock, u32 uiNumBlocks, bool bForce)
+{
+  bool bRet,bSuccess=false;
+  CRKComm *pComm = NULL;
+  printf("Erase block in, CS=%d, startblock=%d,numblocks=%d%s!\r\n",ucFlashCS,uiStartBlock,uiNumBlocks,bForce?" FORCE":"");
+  if (!check_device_type(dev, RKUSB_LOADER | RKUSB_MASKROM))
+    return false;
+  pComm = new CRKUsbComm(dev, g_pLogObject, bRet);
+  if (!bRet)
+  {
+    printf("Erase block quit, creating comm object failed!\r\n");
+    goto EXIT_ERASE;
+  }
+  bSuccess = do_erase_blocks(pComm, ucFlashCS, uiStartBlock, uiNumBlocks, bForce ? ERASE_FORCE : ERASE_NORMAL);
+EXIT_ERASE:
+  if (pComm)
+    delete pComm;
+  return bSuccess;
+}
+
+
+
 bool erase_ubi_block(STRUCT_RKDEVICE_DESC &dev, u32 uiOffset, u32 uiPartSize)
 {
 	STRUCT_FLASHINFO_CMD info;
 	CRKComm *pComm = NULL;
 	BYTE flashID[5];
 	bool bRet,bSuccess=false;
-	UINT uiReadCount,uiStartBlock,uiEraseBlock,uiBlockCount,uiErasePos;
+	UINT uiReadCount,uiStartBlock,uiEraseBlock;
 	int iRet;
 	DWORD *pID=NULL;
 
@@ -2622,32 +2672,16 @@ bool erase_ubi_block(STRUCT_RKDEVICE_DESC &dev, u32 uiOffset, u32 uiPartSize)
 	uiStartBlock = uiOffset / info.usBlockSize;
 	uiEraseBlock = (uiPartSize + info.usBlockSize -1) / info.usBlockSize;
 
-
 	printf("Erase block start, offset=0x%08x,count=0x%08x!\r\n",uiStartBlock,uiEraseBlock);
-	uiErasePos=uiStartBlock;
-	while (uiEraseBlock>0)
-	{
-		uiBlockCount = (uiEraseBlock<MAX_ERASE_BLOCKS)?uiEraseBlock:MAX_ERASE_BLOCKS;
 
-		iRet = pComm->RKU_EraseBlock(0,uiErasePos,uiBlockCount,ERASE_FORCE);
-		if ((iRet!=ERR_SUCCESS)&&(iRet!=ERR_FOUND_BAD_BLOCK))
-		{
-			if (g_pLogObject)
-			{
-				g_pLogObject->Record("Error:EraseUBIBlock-->RKU_EraseBlock failed,RetCode(%d)",iRet);
-			}
-			goto EXIT_UBI_ERASE;
-		}
+	bSuccess = do_erase_blocks(pComm, 0, uiStartBlock, uiEraseBlock, ERASE_FORCE);
 
-		uiErasePos += uiBlockCount;
-		uiEraseBlock -= uiBlockCount;
-	}
-	bSuccess = true;
 EXIT_UBI_ERASE:
 	if (pComm)
 		delete pComm;
 	return bSuccess;
 }
+
 bool erase_partition(CRKUsbComm *pComm, UINT uiOffset, UINT uiSize)
 {
 	UINT uiErase=1024*32;
@@ -2678,8 +2712,8 @@ bool erase_partition(CRKUsbComm *pComm, UINT uiOffset, UINT uiSize)
 		}
 	}
 	return bSuccess;
-
 }
+
 bool EatSparseChunk(FILE *file, chunk_header &chunk)
 {
 	UINT uiRead;
@@ -2693,6 +2727,7 @@ bool EatSparseChunk(FILE *file, chunk_header &chunk)
 	}
 	return true;
 }
+
 bool EatSparseData(FILE *file, PBYTE pBuf, DWORD dwSize)
 {
 	UINT uiRead;
@@ -3186,6 +3221,32 @@ bool handle_command(int argc, char* argv[], CRKScan *pScan)
 			bSuccess = erase_flash(dev);
 		} else
 			printf("Parameter of [EF] command is invalid, please check help!\r\n");
+  } else if(strcmp(strCmd.c_str(), "EB") == 0) {
+    // EB <CS> <BeginBlock> <NumBlocks> [--force]
+    if (argc>=5 && argc<=6) {
+      bool bForce = false;
+      if (argc>5 && strcmp(argv[5], "--force")==0) {
+        bForce = true;
+      }
+      char *pszEnd;
+      UINT uiFlashCS = strtoul(argv[2], &pszEnd, 0);
+      if (*pszEnd)
+        printf("CS is invalid, please check!\r\n");
+      else {
+        UINT uiStartBlock = strtoul(argv[3], &pszEnd, 0);
+        if (*pszEnd)
+          printf("Start block is invalid, please check!\r\n");
+        else {
+          UINT uiNumBlocks = strtoul(argv[4], &pszEnd, 0);
+          if (*pszEnd)
+            printf("Number of blocks is invalid, please check!\r\n");
+          else {
+            bSuccess = erase_blocks(dev, uiFlashCS, uiStartBlock, uiNumBlocks, bForce);
+          }
+        }
+      }
+    } else
+      printf("Parameter of [EB] command is invalid, please check help!\r\n");
 	} else if(strcmp(strCmd.c_str(), "WL") == 0) {
 		if (argc == 4) {
 			UINT uiBegin;
@@ -3195,7 +3256,7 @@ bool handle_command(int argc, char* argv[], CRKScan *pScan)
 				printf("Begin is invalid, please check!\r\n");
 			else {
 				if (is_sparse_image(argv[3]))
-						bSuccess = write_sparse_lba(dev, (u32)uiBegin, (u32)-1, argv[3]);
+          bSuccess = write_sparse_lba(dev, (u32)uiBegin, (u32)-1, argv[3]);
 				else {
 					bSuccess = true;
 					if (is_ubifs_image(argv[3]))
