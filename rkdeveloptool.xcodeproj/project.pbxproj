@@ -1,0 +1,354 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED2203942C42EDD300F1C463 /* RKDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2203822C42EDD300F1C463 /* RKDevice.cpp */; };
+		ED2203952C42EDD300F1C463 /* RKBoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2203842C42EDD300F1C463 /* RKBoot.cpp */; };
+		ED2203962C42EDD300F1C463 /* crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2203872C42EDD300F1C463 /* crc.cpp */; };
+		ED2203972C42EDD300F1C463 /* RKScan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED22038D2C42EDD300F1C463 /* RKScan.cpp */; };
+		ED2203982C42EDD300F1C463 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED22038E2C42EDD300F1C463 /* main.cpp */; };
+		ED2203992C42EDD300F1C463 /* RKComm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED22038F2C42EDD300F1C463 /* RKComm.cpp */; };
+		ED22039A2C42EDD300F1C463 /* RKLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2203922C42EDD300F1C463 /* RKLog.cpp */; };
+		ED22039B2C42EDD300F1C463 /* RKImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED2203932C42EDD300F1C463 /* RKImage.cpp */; };
+		ED2203A02C42F07300F1C463 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED22039F2C42F07300F1C463 /* libusb-1.0.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED2203762C42ED4B00F1C463 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		ED2203782C42ED4B00F1C463 /* rkdeveloptool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rkdeveloptool; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED2203822C42EDD300F1C463 /* RKDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKDevice.cpp; sourceTree = "<group>"; };
+		ED2203832C42EDD300F1C463 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED2203842C42EDD300F1C463 /* RKBoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKBoot.cpp; sourceTree = "<group>"; };
+		ED2203852C42EDD300F1C463 /* RKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDevice.h; sourceTree = "<group>"; };
+		ED2203862C42EDD300F1C463 /* RKScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKScan.h; sourceTree = "<group>"; };
+		ED2203872C42EDD300F1C463 /* crc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crc.cpp; sourceTree = "<group>"; };
+		ED2203882C42EDD300F1C463 /* gpt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gpt.h; sourceTree = "<group>"; };
+		ED2203892C42EDD300F1C463 /* RKBoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKBoot.h; sourceTree = "<group>"; };
+		ED22038A2C42EDD300F1C463 /* Property.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Property.hpp; sourceTree = "<group>"; };
+		ED22038B2C42EDD300F1C463 /* RKComm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKComm.h; sourceTree = "<group>"; };
+		ED22038C2C42EDD300F1C463 /* boot_merger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boot_merger.h; sourceTree = "<group>"; };
+		ED22038D2C42EDD300F1C463 /* RKScan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKScan.cpp; sourceTree = "<group>"; };
+		ED22038E2C42EDD300F1C463 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		ED22038F2C42EDD300F1C463 /* RKComm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKComm.cpp; sourceTree = "<group>"; };
+		ED2203902C42EDD300F1C463 /* RKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKImage.h; sourceTree = "<group>"; };
+		ED2203912C42EDD300F1C463 /* RKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLog.h; sourceTree = "<group>"; };
+		ED2203922C42EDD300F1C463 /* RKLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKLog.cpp; sourceTree = "<group>"; };
+		ED2203932C42EDD300F1C463 /* RKImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKImage.cpp; sourceTree = "<group>"; };
+		ED22039F2C42F07300F1C463 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "/opt/homebrew/Cellar/libusb/1.0.27/lib/libusb-1.0.a"; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED2203752C42ED4B00F1C463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED2203A02C42F07300F1C463 /* libusb-1.0.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED22036F2C42ED4B00F1C463 = {
+			isa = PBXGroup;
+			children = (
+				ED2203832C42EDD300F1C463 /* README.md */,
+				ED22038C2C42EDD300F1C463 /* boot_merger.h */,
+				ED2203872C42EDD300F1C463 /* crc.cpp */,
+				ED2203882C42EDD300F1C463 /* gpt.h */,
+				ED22038E2C42EDD300F1C463 /* main.cpp */,
+				ED22038A2C42EDD300F1C463 /* Property.hpp */,
+				ED2203842C42EDD300F1C463 /* RKBoot.cpp */,
+				ED2203892C42EDD300F1C463 /* RKBoot.h */,
+				ED22038F2C42EDD300F1C463 /* RKComm.cpp */,
+				ED22038B2C42EDD300F1C463 /* RKComm.h */,
+				ED2203822C42EDD300F1C463 /* RKDevice.cpp */,
+				ED2203852C42EDD300F1C463 /* RKDevice.h */,
+				ED2203932C42EDD300F1C463 /* RKImage.cpp */,
+				ED2203902C42EDD300F1C463 /* RKImage.h */,
+				ED2203922C42EDD300F1C463 /* RKLog.cpp */,
+				ED2203912C42EDD300F1C463 /* RKLog.h */,
+				ED22038D2C42EDD300F1C463 /* RKScan.cpp */,
+				ED2203862C42EDD300F1C463 /* RKScan.h */,
+				ED2203792C42ED4B00F1C463 /* Products */,
+				ED22039C2C42EE6300F1C463 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ED2203792C42ED4B00F1C463 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED2203782C42ED4B00F1C463 /* rkdeveloptool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED22039C2C42EE6300F1C463 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED22039F2C42F07300F1C463 /* libusb-1.0.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED2203772C42ED4B00F1C463 /* rkdeveloptool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED22037F2C42ED4B00F1C463 /* Build configuration list for PBXNativeTarget "rkdeveloptool" */;
+			buildPhases = (
+				ED2203742C42ED4B00F1C463 /* Sources */,
+				ED2203752C42ED4B00F1C463 /* Frameworks */,
+				ED2203762C42ED4B00F1C463 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rkdeveloptool;
+			productName = rkdeveloptool;
+			productReference = ED2203782C42ED4B00F1C463 /* rkdeveloptool */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED2203702C42ED4B00F1C463 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					ED2203772C42ED4B00F1C463 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = ED2203732C42ED4B00F1C463 /* Build configuration list for PBXProject "rkdeveloptool" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED22036F2C42ED4B00F1C463;
+			productRefGroup = ED2203792C42ED4B00F1C463 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED2203772C42ED4B00F1C463 /* rkdeveloptool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED2203742C42ED4B00F1C463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED2203962C42EDD300F1C463 /* crc.cpp in Sources */,
+				ED2203972C42EDD300F1C463 /* RKScan.cpp in Sources */,
+				ED22039A2C42EDD300F1C463 /* RKLog.cpp in Sources */,
+				ED2203952C42EDD300F1C463 /* RKBoot.cpp in Sources */,
+				ED22039B2C42EDD300F1C463 /* RKImage.cpp in Sources */,
+				ED2203982C42EDD300F1C463 /* main.cpp in Sources */,
+				ED2203992C42EDD300F1C463 /* RKComm.cpp in Sources */,
+				ED2203942C42EDD300F1C463 /* RKDevice.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ED22037D2C42ED4B00F1C463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		ED22037E2C42ED4B00F1C463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		ED2203802C42ED4B00F1C463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/Cellar/libusb/1.0.27/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/include/libusb-1.0";
+				USER_HEADER_SEARCH_PATHS = ./cfg;
+			};
+			name = Debug;
+		};
+		ED2203812C42ED4B00F1C463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/homebrew/Cellar/libusb/1.0.27/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SYSTEM_HEADER_SEARCH_PATHS = "/opt/homebrew/include/libusb-1.0";
+				USER_HEADER_SEARCH_PATHS = ./cfg;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED2203732C42ED4B00F1C463 /* Build configuration list for PBXProject "rkdeveloptool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED22037D2C42ED4B00F1C463 /* Debug */,
+				ED22037E2C42ED4B00F1C463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED22037F2C42ED4B00F1C463 /* Build configuration list for PBXNativeTarget "rkdeveloptool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED2203802C42ED4B00F1C463 /* Debug */,
+				ED2203812C42ED4B00F1C463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED2203702C42ED4B00F1C463 /* Project object */;
+}
