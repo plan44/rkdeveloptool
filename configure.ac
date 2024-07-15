@@ -1,6 +1,7 @@
 dnl Copyright (C) 2017  Trevor Woerner <twoerner@gmail.com>
+dnl additional work by Eddie Cai <eddie.cai.linux@gmail.com>
 
-AC_INIT([Rockchip rkdeveloptool], 1.32, [Eddie Cai <eddie.cai.linux@gmail.com>], rkdeveloptool)
+AC_INIT([Rockchip rkdeveloptool], 1.33, [Lukas Zeller <luz@plan44.ch>], rkdeveloptool)
 AC_PREREQ([2.68])
 AC_CONFIG_SRCDIR(main.cpp)
 AC_CONFIG_AUX_DIR(cfg)

@@ -51,6 +51,7 @@
 		ED2203922C42EDD300F1C463 /* RKLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKLog.cpp; sourceTree = "<group>"; };
 		ED2203932C42EDD300F1C463 /* RKImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RKImage.cpp; sourceTree = "<group>"; };
 		ED22039F2C42F07300F1C463 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "/opt/homebrew/Cellar/libusb/1.0.27/lib/libusb-1.0.a"; sourceTree = "<absolute>"; };
+		ED2203A12C446B7C00F1C463 /* configure.ac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure.ac; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 		ED22036F2C42ED4B00F1C463 = {
 			isa = PBXGroup;
 			children = (
+				ED2203A12C446B7C00F1C463 /* configure.ac */,
 				ED2203832C42EDD300F1C463 /* README.md */,
 				ED22038C2C42EDD300F1C463 /* boot_merger.h */,
 				ED2203872C42EDD300F1C463 /* crc.cpp */,

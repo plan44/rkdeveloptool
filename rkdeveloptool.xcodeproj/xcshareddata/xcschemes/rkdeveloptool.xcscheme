@@ -58,11 +58,15 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "wl 0x800 &quot;/Users/luz/Documents/plan44/Projekte/LuckFox Pico + Rockchip/Buildroot firmware images/Luckfox_Pico_Pro_Max_Flash/boot.img&quot;"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "eb 0 8 32 --force"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "eb 0 8 32"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "wl 0x16800 &quot;/Users/luz/Documents/plan44/Projekte/LuckFox Pico + Rockchip/Buildroot firmware images/Luckfox_Pico_Pro_Max_Flash/rootfs.img&quot;"
